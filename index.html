@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/forcaico.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>Jogo da Forca</title>
+</head>
+<body>
+    <header class="header">
+        <img class="logo" src="./assets/logo.svg" alt="logo">
+    </header>
+
+    <main class="home" id="home">
+        <div class="home-container">
+            <h1 class="title">Jogo da Forca</h1>
+    
+            <button class="play-btn" id="playBtn">Jogar</button>
+            <button class="add-word-btn" id="addWordBtn">Adicionar Palavra</button>
+        </div>
+    </main>
+
+    <section class="game" id="game">
+        <img src="./assets/forca.png" alt="forca" class="hangman" id="hangman">
+        <div class="btns">
+            <button class="new-game" id="newGame">Novo Jogo</button>
+            <button class="giveup" id="giveUp">Desistir</button>
+        </div>
+        <div class="hearts" id="hearts">
+            <img src="./assets/heart.png" alt="heart" class="heart">
+            <img src="./assets/heart.png" alt="heart" class="heart">
+            <img src="./assets/heart.png" alt="heart" class="heart">
+            <img src="./assets/heart.png" alt="heart" class="heart">
+            <img src="./assets/heart.png" alt="heart" class="heart">
+            <img src="./assets/heart.png" alt="heart" class="heart">
+        </div>
+
+        <div class="board">
+            <span class="tip" id="tip">Animal</span>
+            <div class="word" id="word">
+                <div class="word-enabled"><p class="letter active">A</p></div>
+                <div class="word-enabled"><p class="letter active">L</p></div>
+                <div class="word-disabled"><p class="letter">U</p></div>
+                <div class="word-enabled"><p class="letter active">R</p></div>
+                <div class="word-enabled"><p class="letter active">A</p></div>
+            </div>
+            <div class="keys" id="keys">
+                <div class="key"><p>B</p></div>
+                <div class="key"><p>J</p></div>
+                <div class="key"><p>O</p></div>
+                <div class="key"><p>Q</p></div>
+                <div class="key"><p>N</p></div>
+                <div class="key"><p>T</p></div>
+                <div class="key"><p>W</p></div>
+                <div class="key"><p>H</p></div>
+            </div>
+            <div class="description">
+                <h6>Use as teclas do teclado para achar as letras da palavra</h6>
+            </div>
+            <div class="mobile-keyboard" id="mobile-keyboard">
+                <div class="first-keys">
+                    <div class="key"><p>Q</p></div>
+                    <div class="key"><p>W</p></div>
+                    <div class="key"><p>E</p></div>
+                    <div class="key"><p>R</p></div>
+                    <div class="key"><p>T</p></div>
+                    <div class="key"><p>Y</p></div>
+                    <div class="key"><p>U</p></div>
+                    <div class="key"><p>I</p></div>
+                    <div class="key"><p>O</p></div>
+                    <div class="key"><p>P</p></div>
+                </div>
+                <div class="second-keys">
+                    <div class="key"><p>A</p></div>
+                    <div class="key"><p>S</p></div>
+                    <div class="key"><p>D</p></div>
+                    <div class="key"><p>F</p></div>
+                    <div class="key"><p>G</p></div>
+                    <div class="key"><p>H</p></div>
+                    <div class="key"><p>J</p></div>
+                    <div class="key"><p>K</p></div>
+                    <div class="key"><p>L</p></div>
+                </div>
+                <div class="third-keys">
+                    <div class="key"><p>Z</p></div>
+                    <div class="key"><p>X</p></div>
+                    <div class="key"><p>C</p></div>
+                    <div class="key"><p>V</p></div>
+                    <div class="key"><p>B</p></div>
+                    <div class="key"><p>N</p></div>
+                    <div class="key"><p>M</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="add-word" id="addWord">
+        <div class="add-word-container">
+            <h1>Adicione sua palavra</h1>
+            <input type="text" class="word-added" id="wordAdded" placeholder="Digite sua palavra">
+            <input type="text" class="tip-added" id="tipAdded" placeholder="Dica">
+            <div class="add-word-buttons">
+                <button class="word-save" id="wordSave">Salvar</button>
+                <button class="word-back" id="wordBack">Voltar</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="game-result">
+        <div class="game-lost" id="game-lost">
+            <div class="game-lost-phrase">
+                <p>Não desista! Comece um novo jogo</p>
+            </div>
+            <div class="game-lost-result">
+                <h1>Perdeu!</h1>
+            </div>
+        </div>
+        <div class="game-win" id="game-win">
+            <div class="game-win-phrase">
+                <p>Parabens! Comece um novo jogo</p>
+            </div>
+            <div class="game-win-result">
+                <h1>Ganhou!</h1>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <h3>Desenvolvido por Matheus Kristman</h3>
+        <div class="social">
+            <a href="https://github.com/MatheusKristman" class="github"><img src="./assets/github.svg" alt="github" class="github-image"></a>
+            <a href="https://www.linkedin.com/in/matheus-kristman-07a947171/" class="linkedin"><img src="./assets/linkedin.svg" alt="linkedin" class="linkedin-image"></a>
+        </div>
+    </footer>
+        
+    <script src="./script.js"></script>
+</body>
+</html>
