@@ -11,6 +11,7 @@ const wordValue = document.getElementById('wordAdded');
 const tipValue = document.getElementById('tipAdded');
 const hangman = document.getElementById('hangman');
 const hearts = document.getElementById('hearts');
+const board = document.getElementById('board');
 const tipWord = document.getElementById('tip');
 const wordBoard = document.getElementById('word');
 const keysBoard = document.getElementById('keys');
@@ -27,8 +28,8 @@ let randomId = 0;
 let previousId = 0;
 
 // words array
-const words = ['PEIXE', 'PUNHO', 'PROJETIL', 'PALITO', 'ELEFANTE', 'MILHO', 'RECIPIENTE', 'ADESIVO', 'NICOTINA', 'MINHOCA'];
-const tips = ['ANIMAL', 'PARTE DO CORPO', 'ARMA DE FOGO', 'OBJETO', 'ANIMAL', 'ALIMENTO', 'OBJETO', 'COLA', 'SUBSTANCIA', 'ANIMAL'];
+const words = ['TORRADEIRA', 'SARDINHA', 'NARIZ', 'AGULHA', 'CAMISA', 'ABAJUR', 'SATELITE', 'AMERICA', 'BASQUETE', 'LONTRA'];
+const tips = ['COZINHA', 'ANIMAL AQUATICO', 'PARTE DO CORPO', 'OBJETO', 'ROUPA', 'ILUMINACAO', 'ESPACO', 'GEOGRAFIA', 'ESPORTE', 'ANIMAL FOFINHO'];
 
 // home btns
 // go to game page
@@ -150,6 +151,10 @@ function keyDownGame(e) {
 
 function createBoard() {
     document.addEventListener('keydown', keyDownGame);
+    board.style.display = 'block'
+    board.style.animation = 'fadeIn 1s';
+    hearts.style.display = 'flex';
+    hearts.style.animation = 'fadeIn 1s';
     hangman.style.display = 'block';
     hangman.style.animation = 'ropeDown 1s';
     for(let i = 0; i < 6; i++) {
@@ -218,6 +223,10 @@ function createBoardMobile() {
         }
     });
     mobileKeyboard.addEventListener('click', keyDownGameMobile);
+    board.style.display = 'block'
+    board.style.animation = 'fadeIn 1s';
+    hearts.style.display = 'flex';
+    hearts.style.animation = 'fadeIn 1s';
     hangman.style.display = 'block';
     hangman.style.animation = 'ropeDown 1s';
     for(let i = 0; i < 6; i++) {
@@ -278,11 +287,15 @@ function heartLoss(points) {
 
 function win() {
     tipWord.style.display = 'none';
+    board.style.animation = 'fadeOut 1s';
+    hearts.style.animation = 'fadeOut 1s';
     hangman.style.animation = 'ropeUp 1s';
     winBoard.style.display = 'block';
     winBoard.style.animation = 'showResult 1s';
     setTimeout(() => {
         hangman.style.display = 'none';
+        board.style.display = 'none';
+        hearts.style.display = 'none';
         winBoard.style.transform = 'translateY(0)';
     }, 900);
     document.removeEventListener('keydown', keyDownGame);
@@ -291,13 +304,16 @@ function win() {
 
 function lost() {
     tipWord.style.display = 'none';
+    board.style.animation = 'fadeOut 1s';
     hangman.style.animation = 'ropeUp 1s';
     lostBoard.style.display = 'block';
-        lostBoard.style.animation = 'showResult 1s';
-        setTimeout(() => {
-            hangman.style.display = 'none';
-            lostBoard.style.transform = 'translateY(0)';
-        }, 900);
+    lostBoard.style.animation = 'showResult 1s';
+
+    setTimeout(() => {
+        hangman.style.display = 'none';
+        board.style.display = 'none';
+        lostBoard.style.transform = 'translateY(0)';
+    }, 900);
     document.removeEventListener('keydown', keyDownGame);
     mobileKeyboard.removeEventListener('click', keyDownGameMobile);
 }
