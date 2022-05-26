@@ -27,9 +27,8 @@
 
     <section class="game" id="game">
         <img src="./assets/forca.png" alt="forca" class="hangman" id="hangman">
-        <div class="btns">
-            <button class="new-game" id="newGame">Novo Jogo</button>
-            <button class="giveup" id="giveUp">Desistir</button>
+        <div class="btns">            
+            <button class="giveup" id="giveUp" tabindex="-1">Desistir</button>
         </div>
         <div class="hearts" id="hearts">
             <img src="./assets/heart.png" alt="heart" class="heart">
@@ -125,6 +124,7 @@
             <div class="game-lost-result">
                 <h1>Você Perdeu!</h1>
             </div>
+            <button class="new-game" id="newGameLost" tabindex="-1">Novo Jogo</button>
         </div>
         <div class="game-win" id="game-win">
             <div class="game-win-phrase">
@@ -133,6 +133,7 @@
             <div class="game-win-result">
                 <h1>Você Ganhou!</h1>
             </div>
+            <button class="new-game" id="newGameWin" tabindex="-1">Novo Jogo</button>
         </div>
     </section>
 

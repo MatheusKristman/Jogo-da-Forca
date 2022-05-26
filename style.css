@@ -114,33 +114,6 @@ body {
     left: 55px;
 }
 
-.game .btns .new-game {
-    font-family: inherit;
-    font-size: 20px;
-    padding: 4px;
-    width: 130px;
-    height: 100%;
-    border-radius: 10px;
-    border: none;
-    background-color: #F66B0E;
-    color: #EFEFEF;
-    box-shadow: 5px 5px #20537580;
-    margin-right: 24px;
-    cursor: pointer;
-    transition: background-color .2s;
-}
-
-.game .btns .new-game:hover {
-    background-color: #ce5a0d;
-}
-
-.game .btns .new-game:active {
-    padding: 3px 4px;
-    background-color: #112B3C;
-    border: 1px solid #205375;
-    color: #F66B0E;
-}
-
 .game .btns .giveup {
     position: relative;
     font-family: inherit;
@@ -509,6 +482,60 @@ body {
     color: #EFEFEF;
 }
 
+.game-result .game-win .new-game {
+    font-family: inherit;
+    font-size: 30px;
+    padding: 4px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: none;
+    background-color: #F66B0E;
+    color: #EFEFEF;
+    box-shadow: 5px 5px #20537580;
+    margin-top: 13px;
+    cursor: pointer;
+    transition: background-color .2s;
+}
+
+.game-result .game-win .new-game:hover {
+    background-color: #ce5a0d;
+}
+
+.game-result .game-win .new-game:active {
+    padding: 3px 4px;
+    background-color: #112B3C;
+    border: 1px solid #205375;
+    color: #F66B0E;
+}
+
+.game-result .game-lost .new-game {
+    font-family: inherit;
+    font-size: 30px;
+    padding: 4px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: none;
+    background-color: #F66B0E;
+    color: #EFEFEF;
+    box-shadow: 5px 5px #20537580;
+    margin-top: 13px;
+    cursor: pointer;
+    transition: background-color .2s;
+}
+
+.game-result .game-lost .new-game:hover {
+    background-color: #ce5a0d;
+}
+
+.game-result .game-lost .new-game:active {
+    padding: 3px 4px;
+    background-color: #112B3C;
+    border: 1px solid #205375;
+    color: #F66B0E;
+}
+
 
 /* footer site */
 
@@ -683,7 +710,15 @@ body {
 
     .game-result .game-win .game-win-result h1 {
         font-size: 65px;
-    }    
+    }
+    
+    .game-result .game-win .new-game {
+        font-size: 25px;
+    }
+
+    .game-result .game-lost .new-game {
+        font-size: 25px;
+    }
 }
 
 @media screen and (max-width: 768px) {    
@@ -691,10 +726,6 @@ body {
     .game .btns {
         flex-direction: column;
         left: 15px;
-    }
-
-    .game .btns .new-game {
-        margin-bottom: 15px;
     }
 
     .game .board .word .word-enabled {
@@ -758,10 +789,6 @@ body {
     .game .hangman {
         width: 80px;
     }
-
-    /* .game .board .word {
-        margin-bottom: 50px;
-    } */
 
     .game .board .word .word-enabled {
         width: 34px;
@@ -851,11 +878,6 @@ body {
     .home .home-container .add-word-btn {
         width: 220px;
         font-size: 25px;
-    }   
-
-    .game .btns .new-game {
-        width: 90px;
-        font-size: 18px;
     }
 
     .game .btns .giveup {
@@ -923,10 +945,6 @@ body {
         font-size: 35px;
     }
 
-    /* .game .board .word {
-        margin-bottom: 100px;
-    } */
-
     .game .board .word .word-enabled {
         width: 26px;
         height: 41px;
@@ -987,6 +1005,14 @@ body {
 
     .game-result .game-win .game-win-result h1 {
         font-size: 55px;
+    }
+
+    .game-result .game-win .new-game {
+        font-size: 20px;
+    }
+
+    .game-result .game-lost .new-game {
+        font-size: 20px;
     }
 }
 

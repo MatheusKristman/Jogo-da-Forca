@@ -2,7 +2,8 @@ const play = document.getElementById('playBtn');
 const addWordBtn = document.getElementById('addWordBtn');
 const saveWordBtn = document.getElementById('wordSave');
 const backWordBtn = document.getElementById('wordBack');
-const newGameBtn = document.getElementById('newGame');
+const newGameWinBtn = document.getElementById('newGameWin');
+const newGameLostBtn = document.getElementById('newGameLost');
 const giveUpBtn = document.getElementById('giveUp');
 const homePage = document.getElementById('home');
 const addWordPage = document.getElementById('addWord');
@@ -77,7 +78,15 @@ backWordBtn.addEventListener('click', () => {
 
 // game btns
 
-newGameBtn.addEventListener('click', () => {  
+newGameWinBtn.addEventListener('click', () => {  
+    if(document.body.clientWidth > 1080){
+        createBoard();
+    }else {
+        createBoardMobile();        
+    }
+});
+
+newGameLostBtn.addEventListener('click', () => {  
     if(document.body.clientWidth > 1080){
         createBoard();
     }else {
