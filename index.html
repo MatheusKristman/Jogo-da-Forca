@@ -48,6 +48,11 @@
                 <div class="word-disabled"><p class="letter">U</p></div>
                 <div class="word-enabled"><p class="letter active">R</p></div>
                 <div class="word-enabled"><p class="letter active">A</p></div>
+                <div class="word-enabled"><p class="letter active">A</p></div>
+                <div class="word-enabled"><p class="letter active">A</p></div>
+                <div class="word-enabled"><p class="letter active">A</p></div>
+                <div class="word-enabled"><p class="letter active">A</p></div>
+                <div class="word-enabled"><p class="letter active">A</p></div>
             </div>
             <div class="keys" id="keys">
                 <div class="key"><p>B</p></div>
@@ -102,7 +107,8 @@
     <section class="add-word" id="addWord">
         <div class="add-word-container">
             <h1>Adicione sua palavra</h1>
-            <input type="text" class="word-added" id="wordAdded" placeholder="Digite sua palavra">
+            <input type="text" class="word-added" id="wordAdded" placeholder="Digite sua palavra" maxlength="10">
+            <h6>Palavra: Maximo de dez letras</h6>
             <input type="text" class="tip-added" id="tipAdded" placeholder="Dica">
             <div class="add-word-buttons">
                 <button class="word-save" id="wordSave">Salvar</button>
@@ -117,7 +123,7 @@
                 <p>Não desista! Comece um novo jogo</p>
             </div>
             <div class="game-lost-result">
-                <h1>Perdeu!</h1>
+                <h1>Você Perdeu!</h1>
             </div>
         </div>
         <div class="game-win" id="game-win">
@@ -125,12 +131,12 @@
                 <p>Parabens! Comece um novo jogo</p>
             </div>
             <div class="game-win-result">
-                <h1>Ganhou!</h1>
+                <h1>Você Ganhou!</h1>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer" id="footer">
         <h3>Desenvolvido por Matheus Kristman</h3>
         <div class="social">
             <a href="https://github.com/MatheusKristman" class="github"><img src="./assets/github.svg" alt="github" class="github-image"></a>

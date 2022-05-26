@@ -17,11 +17,14 @@ const keysBoard = document.getElementById('keys');
 const winBoard = document.getElementById('game-win');
 const lostBoard = document.getElementById('game-lost');
 const mobileKeyboard = document.getElementById('mobile-keyboard');
+const footer = document.getElementById('footer');
 
 let lossCount = 0;
 let winCount = 0;
 let wordBackup = '';
 let keyPressed = [];
+let randomId = 0;
+let previousId = 0;
 
 // words array
 const words = ['PEIXE', 'PUNHO', 'PROJETIL', 'PALITO', 'ELEFANTE', 'MILHO', 'RECIPIENTE', 'ADESIVO', 'NICOTINA', 'MINHOCA'];
@@ -31,16 +34,18 @@ const tips = ['ANIMAL', 'PARTE DO CORPO', 'ARMA DE FOGO', 'OBJETO', 'ANIMAL', 'A
 // go to game page
 play.addEventListener('click', () => {
     pageTo(homePage, gamePage);
-    if(document.body.clientWidth > 1024){
+    footerFadeOut();
+    if(document.body.clientWidth > 1080){
         createBoard();
     }else {
         createBoardMobile();        
     }
-})
+});
 
 // go to addword page
 addWordBtn.addEventListener('click', () => {
     pageTo(homePage, addWordPage);
+    footerFadeOut();
 });
 
 
@@ -60,26 +65,28 @@ saveWordBtn.addEventListener('click', () => {
         setTimeout(() => {
             wordValue.value = '';
             tipValue.value = '';
-        }, 1000)
+        }, 1000);
     }
 });
 
 backWordBtn.addEventListener('click', () => {
     pageTo(addWordPage, homePage);
-})
+    footerFadeIn();
+});
 
 // game btns
 
 newGameBtn.addEventListener('click', () => {  
-    if(document.body.clientWidth > 1024){
+    if(document.body.clientWidth > 1080){
         createBoard();
     }else {
         createBoardMobile();        
     }
-})
+});
 
 giveUpBtn.addEventListener('click', () => {
     pageTo(gamePage, homePage);
+    footerFadeIn();
     document.removeEventListener('keydown', keyDownGame);
     winBoard.style.animation = 'hideResult 1s';
     lostBoard.style.animation = 'hideResult 1s';
@@ -89,13 +96,23 @@ giveUpBtn.addEventListener('click', () => {
         lostBoard.style.display = 'none';
         lostBoard.style.transform = 'translateY(-500px)';
     }, 900);
-})
-
-// if(window.getComputedStyle(gamePage).getPropertyValue('display') === 'block'){
-//     document.addEventListener('keydown', keyDownGame);
-// }
+});
 
 // functions
+
+function footerFadeOut() {
+    footer.style.animation = 'fadeOut .3s';
+    setTimeout(() => {
+        footer.style.display = 'none';
+    }, 250);
+}
+
+function footerFadeIn() {
+    setTimeout(() => {
+        footer.style.display = 'flex';
+        footer.style.animation = 'fadeIn .3s';
+    }, 250);
+}
 
 function pageTo(pageFrom, pageTo) {
     pageFrom.style.animation = 'fadeOut .3s';
@@ -110,7 +127,6 @@ function keyDownGame(e) {
     const wordLength = document.querySelectorAll('.word div').length;
     if(e.keyCode >= 65 && e.keyCode <= 90 && !keyPressed.includes(e.key)){
         keyPressed.push(e.key);
-        console.log(keyPressed);
         if(wordBackup.includes(e.key.toUpperCase())) {
             for(let i = 0; i < wordLength; i++){
                 if(e.key.toUpperCase() === wordBoard.children[i].textContent){
@@ -125,7 +141,7 @@ function keyDownGame(e) {
                 win();
             }      
         } else {
-            keysBoard.innerHTML += `<div class="key"><p>${e.key.toUpperCase()}</p></div>`
+            keysBoard.innerHTML += `<div class="key"><p>${e.key.toUpperCase()}</p></div>`;
             lossCount++;          
             heartLoss(lossCount);
         }
@@ -142,7 +158,6 @@ function createBoard() {
     lossCount = 0;
     winCount = 0;
     keyPressed = [];
-    console.log(winCount);
     winBoard.style.animation = 'hideResult 1s';
     lostBoard.style.animation = 'hideResult 1s';
     setTimeout(() => {
@@ -151,13 +166,15 @@ function createBoard() {
         lostBoard.style.display = 'none';
         lostBoard.style.transform = 'translateY(-500px)';
     }, 900);
-    tipWord.style.display = 'block';
-    let randomId = Math.floor(Math.random() * words.length);
+    tipWord.style.display = 'block';    
+    while(randomId === previousId){
+        randomId = Math.floor(Math.random() * words.length);       
+    }
+    previousId = randomId;
     tipWord.textContent = tips[randomId];
     let newWord = words[randomId];
     wordBackup = words[randomId];
     newWord = newWord.split('');
-    console.log(newWord);
     wordBoard.innerHTML = '';
     for(let i = 0; i < newWord.length; i++) {
         wordBoard.innerHTML += `<div class="word-disabled"><p class="letter">${newWord[i]}</p></div>`;
@@ -170,7 +187,6 @@ function keyDownGameMobile(e) {
     const buttonKeyboard = e.target;
     if(!keyPressed.includes(buttonKeyboard.textContent) && buttonKeyboard.classList.contains('key')){
         keyPressed.push(buttonKeyboard.textContent);
-        console.log(buttonKeyboard.textContent);
         if(wordBackup.includes(buttonKeyboard.textContent.toUpperCase())) {
             for(let i = 0; i < wordLength; i++) {
                 if(buttonKeyboard.textContent.toUpperCase() === wordBoard.children[i].textContent) {
@@ -200,7 +216,7 @@ function createBoardMobile() {
             e.classList.remove('key-pressed');
             e.classList.add('key');
         }
-    }) 
+    });
     mobileKeyboard.addEventListener('click', keyDownGameMobile);
     hangman.style.display = 'block';
     hangman.style.animation = 'ropeDown 1s';
@@ -210,7 +226,6 @@ function createBoardMobile() {
     lossCount = 0;
     winCount = 0;
     keyPressed = [];
-    console.log(winCount);
     winBoard.style.animation = 'hideResult 1s';
     lostBoard.style.animation = 'hideResult 1s';
     setTimeout(() => {
@@ -220,12 +235,17 @@ function createBoardMobile() {
         lostBoard.style.transform = 'translateY(-500px)';
     }, 900);
     tipWord.style.display = 'block';
-    let randomId = Math.floor(Math.random() * words.length);
+    while(randomId === previousId){
+        randomId = Math.floor(Math.random() * words.length);
+        console.log(randomId);
+        console.log(previousId);     
+    }
+    console.log('saiu do loop');
+    previousId = randomId;
     tipWord.textContent = tips[randomId];
     let newWord = words[randomId];
     wordBackup = words[randomId];
     newWord = newWord.split('');
-    console.log(newWord);
     wordBoard.innerHTML = '';
     for(let i = 0; i < newWord.length; i++) {
         wordBoard.innerHTML += `<div class="word-disabled"><p class="letter">${newWord[i]}</p></div>`;
@@ -254,7 +274,6 @@ function heartLoss(points) {
             lost();
             break;
     }
-    console.log(points);
 }
 
 function win() {
@@ -262,23 +281,23 @@ function win() {
     hangman.style.animation = 'ropeUp 1s';
     winBoard.style.display = 'block';
     winBoard.style.animation = 'showResult 1s';
-    document.removeEventListener('keydown', keyDownGame);
-    document.removeEventListener('click', keyDownGameMobile);
     setTimeout(() => {
         hangman.style.display = 'none';
         winBoard.style.transform = 'translateY(0)';
-    }, 900)
+    }, 900);
+    document.removeEventListener('keydown', keyDownGame);
+    document.removeEventListener('click', keyDownGameMobile);
 }
 
 function lost() {
     tipWord.style.display = 'none';
     hangman.style.animation = 'ropeUp 1s';
     lostBoard.style.display = 'block';
-    lostBoard.style.animation = 'showResult 1s';
+        lostBoard.style.animation = 'showResult 1s';
+        setTimeout(() => {
+            hangman.style.display = 'none';
+            lostBoard.style.transform = 'translateY(0)';
+        }, 900);
     document.removeEventListener('keydown', keyDownGame);
     mobileKeyboard.removeEventListener('click', keyDownGameMobile);
-    setTimeout(() => {
-        hangman.style.display = 'none';
-        lostBoard.style.transform = 'translateY(0)';
-    }, 900)
 }

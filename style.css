@@ -5,10 +5,13 @@
 }
 
 body {
+    position: relative;
     font-family: 'Oswald', sans-serif;
     background-color: #112B3C;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 /* header page */
@@ -27,12 +30,7 @@ body {
 
 .home {
     display: block;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    top: 30%;
-    bottom: 70%;
-    transform: translate(-50%, -50%);
+    flex: 1 0 auto;
 }
 
 .home-container {
@@ -104,7 +102,6 @@ body {
 /* game board page */
 
 .game {
-    height: 75%;
     display: none;
 }
 
@@ -184,11 +181,9 @@ body {
     align-items: flex-end;
     width: 100%;
     height: 150px;
-    position: absolute;
 }
 
 .heart {
-    /* margin: 0 5px 50px 5px; */
     width: 40px;
     height: 35px;
     margin-left: 5px;
@@ -202,15 +197,11 @@ body {
 }
 
 .heart.heart-dead {
-    /* display: none; */
     height: 40px;
 }
 
 .game .board {
-    position: relative;
-    top: 70%;
-    bottom: 30%;
-    transform: translateY(-50%);
+    margin-top: 80px;
 }
 
 .game .board .tip {
@@ -317,7 +308,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .add-word .add-word-container h1 {
@@ -326,6 +316,7 @@ body {
     color: #EFEFEF;
     -webkit-text-stroke: 2.5px #205375;
     cursor: default;
+    margin-bottom: 15px;
 }
 
 .add-word .add-word-container .word-added {
@@ -338,12 +329,20 @@ body {
     font-family: inherit;
     border: none;
     border-radius: 10px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     outline: none;
 }
 
 .add-word .add-word-container .word-added::placeholder {
     color: #EFEFEF61;
+}
+
+.add-word .add-word-container h6 {
+    margin: 5px auto;
+    font-family: inherit;
+    font-weight: 300;
+    color: #205375;
+    font-size: 20px;
 }
 
 .add-word .add-word-container .tip-added {
@@ -365,6 +364,7 @@ body {
 
 .add-word .add-word-container .add-word-buttons {
     margin-top: 5%;
+    margin-bottom: 50px;
 }
 
 .add-word .add-word-container .add-word-buttons .word-save {
@@ -466,7 +466,7 @@ body {
 
 .game-result .game-lost .game-lost-result h1 {
     font-family: inherit;
-    font-size: 100px;
+    font-size: 80px;
     font-weight: 400;
     color: #EFEFEF;
 }
@@ -502,7 +502,7 @@ body {
 
 .game-result .game-win .game-win-result h1 {
     font-family: inherit;
-    font-size: 100px;
+    font-size: 80px;
     font-weight: 400;
     color: #EFEFEF;
 }
@@ -511,15 +511,15 @@ body {
 /* footer site */
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    right: 50%;
-    transform: translateX(-50%);
-    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 100%;
     text-align: center;
     color: #EFEFEF;
-    margin-bottom: 20px;
+    margin-top: auto;
+    margin-bottom: 20px; 
 }
 
 .footer h3 {
@@ -530,17 +530,24 @@ body {
 
 .footer .social {
     display: flex;
+    width: 300px;
     justify-content: space-evenly;
     color: #EFEFEF;    
 }
 
 /* media queries */
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1080px) {
+
+    .game .board {
+        margin-top: 30px;
+    }
 
     .game .board .word .word-enabled {
         width: 64px;
         height: 87px;
+        margin-left: 4px;
+        margin-right: 4px; 
     }
 
     .game .board .word .word-enabled p {
@@ -550,6 +557,8 @@ body {
     .game .board .word .word-disabled {
         width: 64px;
         height: 87px;
+        margin-left: 4px;
+        margin-right: 4px; 
     }
 
     .game .board .keys {
@@ -558,6 +567,8 @@ body {
 
     .game .board .mobile-keyboard {
         display: block;
+        margin-bottom: 0;
+        width: 100%;
     }
 
     .game .board .mobile-keyboard .first-keys {
@@ -580,6 +591,8 @@ body {
 
     .game .board .mobile-keyboard .key {
         cursor: pointer;
+        margin-left: 4px;
+        margin-right: 4px;
     }
 
     .game .board .mobile-keyboard .key p{
@@ -596,8 +609,8 @@ body {
         box-shadow: 3px 3px #20537580;
         width: 50px;
         height: 65px;
-        margin-left: 7px;
-        margin-right: 7px;
+        margin-left: 4px;
+        margin-right: 4px;
         animation: desactive 1s;    
         opacity: 0.7;
     }
@@ -660,28 +673,39 @@ body {
 
     .game-result .game-win .game-win-result h1 {
         font-size: 65px;
-    }
+    }    
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {    
+
+    .game .btns {
+        flex-direction: column;
+        left: 15px;
+    }
+
+    .game .btns .new-game {
+        margin-bottom: 15px;
+    }
 
     .game .board .word .word-enabled {
-        width: 64px;
-        height: 77px;
+        width: 45px;
+        height: 60px;        
     }
 
     .game .board .word .word-enabled p {
-        font-size: 50px;
+        font-size: 39px;
     }
 
     .game .board .word .word-disabled {
-        width: 64px;
-        height: 77px;
-    }
+        width: 45px;
+        height: 60px;
+    }    
 
     .key {
-        width: 40px;
+        width: 45px;
         height: 55px;
+        margin-left: 4px;
+        margin-right: 4px;
     }
 
     .key p {
@@ -689,12 +713,18 @@ body {
     }
 
     .key-pressed {
-        width: 40px;
+        width: 45px;
         height: 55px;
+        margin-left: 4px;
+        margin-right: 4px;
     }
 
     .key-pressed p {
         font-size: 35px;
+    }
+
+    .game-result {
+        top: 130px;
     }
 
     .add-word .add-word-container h1 {
@@ -702,21 +732,30 @@ body {
     }
 
     .add-word .add-word-container .word-added {
-        width: 490px;
+        width: 380px;
         height: 150px;
         font-size: 35px;
     }
 
     .add-word .add-word-container .tip-added {
         font-size: 35px;
-        width: 490px;
+        width: 380px;
     }
 }
 
 @media screen and (max-width: 545px) {
+
+    .game .hangman {
+        width: 80px;
+    }
+
+    .game .board .word {
+        margin-bottom: 50px;
+    }
+
     .game .board .word .word-enabled {
         width: 34px;
-        height: 47px;
+        height: 47px;           
     }
 
     .game .board .word .word-enabled p {
@@ -729,8 +768,8 @@ body {
     }
 
     .key {
-        width: 30px;
-        height: 45px;
+        width: 33px;
+        height: 45px;        
     }
 
     .key p {
@@ -738,7 +777,7 @@ body {
     }
 
     .key-pressed {
-        width: 30px;
+        width: 33px;
         height: 45px;
     }
 
@@ -747,17 +786,22 @@ body {
     }
 
     .add-word .add-word-container h1 {
-        font-size: 45px;
+        font-size: 45px;        
     }
 
     .add-word .add-word-container .word-added {
-        width: 400px;
+        width: 70%;
         height: 150px;
         font-size: 30px;
     }
 
+    .add-word .add-word-container h6 {
+        margin: 3px auto;
+        font-size: 14px;
+    }
+
     .add-word .add-word-container .tip-added {
-        width: 400px;
+        width: 70%;
         font-size: 30px;
     }
 
@@ -785,6 +829,8 @@ body {
     .home .home-container .title {
         font-size: 44px;
         -webkit-text-stroke: 1.5px #205375;
+        margin-bottom: 125px;
+        margin-top: 25px;
     }
 
     .home .home-container .play-btn {
@@ -795,7 +841,7 @@ body {
     .home .home-container .add-word-btn {
         width: 220px;
         font-size: 25px;
-    }
+    }   
 
     .game .btns .new-game {
         width: 90px;
@@ -807,41 +853,96 @@ body {
         font-size: 18px;
     }
 
+    .game .board .word .word-enabled {
+        width: 29px;
+        height: 45px;        
+    }
+
+    .game .board .word .word-disabled {
+        width: 29px;
+        height: 45px;        
+    }
+
+    .game .board .word .word-enabled p {
+        font-size: 28px;
+    }    
+
     .key {
-        width: 25px;
-        height: 40px;
+        width: 29px;
+        height: 47px;        
     }
 
     .key p {
-        font-size: 25px;
+        font-size: 31px;
     }
 
     .key-pressed {
-        width: 25px;
-        height: 40px;
+        width: 29px;
+        height: 47px;        
     }
 
     .key-pressed p {
-        font-size: 25px;
+        font-size: 31px;
     }
 
     .add-word .add-word-container h1 {
-        font-size: 35px;
+        font-size: 35px;        
     }
 
     .add-word .add-word-container .word-added {
-        width: 280px;
         height: 180px;
         font-size: 25px;
     }
 
     .add-word .add-word-container .tip-added {
-        width: 280px;
         font-size: 25px;
     }
 }
 
 @media screen and (max-width: 375px) {
+
+    .game .hangman {
+        width: 60px;
+    }
+
+    .game .hearts {
+        height: 100px;
+    }
+
+    .game .board .tip {
+        font-size: 35px;
+    }
+
+    .game .board .word {
+        margin-bottom: 100px;
+    }
+
+    .game .board .word .word-enabled {
+        width: 26px;
+        height: 41px;
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    .game .board .word .word-disabled {
+        width: 26px;
+        height: 41px;
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    .game .board .word .word-enabled p {
+        font-size: 26px;
+    }    
+
+    .key {
+        width: 26px;        
+    }
+
+    .key-pressed {
+        width: 26px;        
+    }
+
     .game-result {
         width: 300px;
     }
@@ -859,7 +960,7 @@ body {
     }
 
     .game-result .game-lost .game-lost-result h1 {
-        font-size: 60px;
+        font-size: 55px;
     }
 
     .game-result .game-win .game-win-phrase {
@@ -875,7 +976,93 @@ body {
     }
 
     .game-result .game-win .game-win-result h1 {
-        font-size: 60px;
+        font-size: 55px;
+    }
+}
+
+@media screen and (max-width: 355px) {
+    .home .home-container .title {
+        margin-bottom: 125px;
+        margin-top: 25px;
+    }
+
+    .add-word .add-word-container h1 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .add-word .add-word-container .word-added {
+        height: 150px;
+        font-size: 20px;
+    }
+
+    .add-word .add-word-container h6 {
+        font-size: 12px;
+    }
+
+    .add-word .add-word-container .tip-added {
+        height: 80px;
+        font-size: 20px;
+    }
+
+    .add-word .add-word-container .add-word-buttons {
+        margin-bottom: 0;
+    }
+
+    .add-word .add-word-container .add-word-buttons .word-save {
+        font-size: 20px;
+    }
+
+    .add-word .add-word-container .add-word-buttons .word-back {
+        font-size: 20px;
+    }
+
+    .game .board .tip {
+        font-size: 30px;
+    }
+
+    .game .board .word {
+        margin-bottom: 70px;
+    }
+
+    .game .board .word .word-enabled {
+        width: 21px;
+        height: 33px;
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    .game .board .word .word-enabled p {
+        font-size: 20px;
+    }
+
+    .game .board .word .word-disabled {
+        width: 21px;
+        height: 33px;
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    .key {
+        width: 22px;
+        height: 35px;
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    .key-pressed {
+        width: 22px;
+        height: 35px;
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    .key-pressed p {
+        font-size: 23px;
+    }
+
+    .key p {
+        font-size: 23px;
     }
 }
 
@@ -895,7 +1082,7 @@ body {
     from {
         transform: translateY(0);
     }
-
+    
     to {
         transform: translateY(-500px);
     }
