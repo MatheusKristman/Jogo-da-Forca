@@ -33,7 +33,7 @@ const tips = ['ANIMAL', 'PARTE DO CORPO', 'ARMA DE FOGO', 'OBJETO', 'ANIMAL', 'A
 // home btns
 // go to game page
 play.addEventListener('click', () => {
-    pageTo(homePage, gamePage);
+    pageTo(homePage, gamePage, 'flex');
     footerFadeOut();
     if(document.body.clientWidth > 1080){
         createBoard();
@@ -44,7 +44,7 @@ play.addEventListener('click', () => {
 
 // go to addword page
 addWordBtn.addEventListener('click', () => {
-    pageTo(homePage, addWordPage);
+    pageTo(homePage, addWordPage, 'block');
     footerFadeOut();
 });
 
@@ -70,7 +70,7 @@ saveWordBtn.addEventListener('click', () => {
 });
 
 backWordBtn.addEventListener('click', () => {
-    pageTo(addWordPage, homePage);
+    pageTo(addWordPage, homePage, 'block');
     footerFadeIn();
 });
 
@@ -85,7 +85,7 @@ newGameBtn.addEventListener('click', () => {
 });
 
 giveUpBtn.addEventListener('click', () => {
-    pageTo(gamePage, homePage);
+    pageTo(gamePage, homePage, 'block');
     footerFadeIn();
     document.removeEventListener('keydown', keyDownGame);
     winBoard.style.animation = 'hideResult 1s';
@@ -114,11 +114,11 @@ function footerFadeIn() {
     }, 250);
 }
 
-function pageTo(pageFrom, pageTo) {
+function pageTo(pageFrom, pageTo, display) {
     pageFrom.style.animation = 'fadeOut .3s';
     setTimeout(() => {
-        pageFrom.style.display = 'none';
-        pageTo.style.display = 'block';
+        pageFrom.style.display = 'none'; /* none */
+        pageTo.style.display = display; /* block */
     }, 250);
     pageTo.style.animation = 'fadeIn .3s';
 }

@@ -103,6 +103,8 @@ body {
 
 .game {
     display: none;
+    flex: 1 0 auto;
+    flex-direction: column;
 }
 
 .game .btns {
@@ -511,7 +513,7 @@ body {
 /* footer site */
 
 .footer {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     flex-shrink: 0;
@@ -540,7 +542,13 @@ body {
 @media screen and (max-width: 1080px) {
 
     .game .board {
-        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
+    }
+
+    .game .board .word {
+        margin-bottom: auto;
     }
 
     .game .board .word .word-enabled {
@@ -566,9 +574,11 @@ body {
     }
 
     .game .board .mobile-keyboard {
-        display: block;
+        display: flex;
         margin-bottom: 0;
         width: 100%;
+        flex-direction: column;
+        margin-top: 40px;
     }
 
     .game .board .mobile-keyboard .first-keys {
@@ -749,9 +759,9 @@ body {
         width: 80px;
     }
 
-    .game .board .word {
+    /* .game .board .word {
         margin-bottom: 50px;
-    }
+    } */
 
     .game .board .word .word-enabled {
         width: 34px;
@@ -913,9 +923,9 @@ body {
         font-size: 35px;
     }
 
-    .game .board .word {
+    /* .game .board .word {
         margin-bottom: 100px;
-    }
+    } */
 
     .game .board .word .word-enabled {
         width: 26px;
@@ -1021,9 +1031,9 @@ body {
         font-size: 30px;
     }
 
-    .game .board .word {
+    /* .game .board .word {
         margin-bottom: 70px;
-    }
+    } */
 
     .game .board .word .word-enabled {
         width: 21px;
